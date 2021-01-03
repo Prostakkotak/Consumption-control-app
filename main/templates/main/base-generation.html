@@ -1,0 +1,31 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:700|Open+Sans:300,400&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/5d8af9cd0e.js"></script>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    {% block title %}<title>Document</title>{% endblock %}
+</head>
+
+<body>
+    <div class="wrapper">
+
+        {% block sidebar %}
+        
+        {% endblock %}
+
+        {% block content %} 
+        {% endblock %}
+
+        <footer class="footer">
+
+        </footer>
+    </div>
+</body>
+
+</html>
