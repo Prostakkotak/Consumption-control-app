@@ -14,13 +14,47 @@
 <p>Всего потрачено за этот месяц: {{consumption_amount_30d}}</p>
 <p>Рейтинг эффективности трат за 30 дней составил: {{efficiency_score}}</p>
 
-<ul>
+<ul hidden>
     {% for percent in percents %}
-    <li>{{percent}}%</li>
+    <li class="hidden-diagram-percent">{{percent}}</li>
     {% endfor %}
 </ul>
 
+<svg width="20%" height="20%" viewBox="0 0 42 42" class="diagram">
+    <circle class="diagram-hole" cx="21" cy="21" r="15.91549430918954" fill="#fff"></circle>
+    <circle class="diagram-ring" cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="#d2d3d4"
+        stroke-width="3"></circle>
+    <circle id="property" class="diagram-segment" cx="21" cy="21" r="15.91549430918954" fill="transparent"
+        stroke="#000CF6" stroke-width="3" stroke-dasharray="80 20" stroke-dashoffset="25"></circle>
+    <circle id="health" class="diagram-segment" cx="21" cy="21" r="15.91549430918954" fill="transparent"
+        stroke="#F6230C" stroke-width="3"></circle>
+    <circle id="presents" class="diagram-segment" cx="21" cy="21" r="15.91549430918954" fill="transparent"
+        stroke="#F600B4" stroke-width="3"></circle>
+    <circle id="travel" class="diagram-segment" cx="21" cy="21" r="15.91549430918954" fill="transparent"
+        stroke="#EEF600" stroke-width="3"></circle>
+    <circle id="personal" class="diagram-segment" cx="21" cy="21" r="15.91549430918954" fill="transparent"
+        stroke="#00F615" stroke-width="3"></circle>
+    <circle id="clothes" class="diagram-segment" cx="21" cy="21" r="15.91549430918954" fill="transparent"
+        stroke="#F6A548" stroke-width="3"></circle>
+    <circle id="food" class="diagram-segment" cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="#B3A9F6"
+        stroke-width="3"></circle>
+    <circle id="help" class="diagram-segment" cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="#F66579"
+        stroke-width="3"></circle>
+    <circle id="personal_transport" class="diagram-segment" cx="21" cy="21" r="15.91549430918954" fill="transparent"
+        stroke="#A4ACF6" stroke-width="3"></circle>
+    <circle id="public_transport" class="diagram-segment" cx="21" cy="21" r="15.91549430918954" fill="transparent"
+        stroke="#9AF696" stroke-width="3"></circle>
+    <circle id="other" class="diagram-segment" cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="#000000"
+        stroke-width="3"></circle>
+</svg>
 
+<ul>
+    {% for category in categories %}
+    <li>{{category}}%</li>
+    {% endfor %}
+</ul>
+
+<script src="{% static 'report.bundle.js' %}"></script>
 {% else %}
 Вы пока-что не записали ни одного расхода!
 {% endif %}

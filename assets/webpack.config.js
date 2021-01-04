@@ -8,6 +8,7 @@ module.exports = {
     mode: 'development',
     entry: {
         styles: '@styles/styles.scss',
+        report: './js/diagram-engine.js',
     },
     output: {
         filename: '[name].bundle.js',

@@ -101,7 +101,8 @@ class MonthlyReport(View):
             return render(request, 'main/report.html', context={
                 'consumption_amount_30d': consumption_amount_30d,
                 'efficiency_score': efficiency_score,
-                'percents': categories,
+                'percents': percents,
+                'categories': categories,
             })
 
         return redirect('index')
@@ -161,7 +162,8 @@ class FullReport(View):
             return render(request, 'main/full_report.html', context={
                 'consumption_amount': consumption_amount,
                 'efficiency_score': efficiency_score,
-                'percents': categories,
+                'percents': percents,
+                'categories': categories,
             })
 
         return redirect('index')
