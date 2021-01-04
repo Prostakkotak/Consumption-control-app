@@ -1,0 +1,32 @@
+{% extends 'main/base-generation.html' %}
+
+{% load static %}
+
+{% block title %}<title>Отчет</title>{% endblock %}
+
+{% block content %}
+
+
+{% if user.is_authenticated %}
+{% if not zero_consumptions %}
+
+
+<p>Всего потрачено за этот месяц: {{consumption_amount_30d}}</p>
+<p>Рейтинг эффективности трат за 30 дней составил: {{efficiency_score}}</p>
+
+<ul>
+    {% for percent in percents %}
+    <li>{{percent}}%</li>
+    {% endfor %}
+</ul>
+
+
+{% else %}
+Вы пока-что не записали ни одного расхода!
+{% endif %}
+{% else %}
+<div class="question">У вас уже есть аккаунт?</div>
+<a href="{% url 'registration' %}?next={{request.path}}">Нет</a>
+<a href="{% url 'login' %}?next={{request.path}}">Да</a>
+{% endif %}
+{% endblock %}

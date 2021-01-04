@@ -1,0 +1,36 @@
+{% extends 'main/base-generation.html' %}
+
+{% load static %}
+
+{% block title %}<title>Добавление расхода</title>{% endblock %}
+
+{% block content %}
+
+
+{% if user.is_authenticated %}
+
+<div class="previous-page-button">
+    <a href="#" onclick="javascript: history.go(-1)" class="previous-page-button__button">&lt; Назад</a>
+</div>
+
+<div class="create-consumption">
+    <form enctype="multipart/form-data" method="POST" class="create-consumption-form create-consumption__form">
+        {% csrf_token %}
+        {% for field in form %}
+        <div class="create-consumption-form__input-block">
+            <span class="create-consumption-form__label">
+                {{field.label_tag}}
+            </span>
+            {{field}}
+        </div>
+        {% endfor %}
+        <input type="submit" class="create-consumption-form__submit">
+    </form>
+</div>
+
+{% else %}
+<div class="question">У вас уже есть аккаунт?</div>
+<a href="{% url 'registration' %}?next={{request.path}}">Нет</a>
+<a href="{% url 'login' %}?next={{request.path}}">Да</a>
+{% endif %}
+{% endblock %}

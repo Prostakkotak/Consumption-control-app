@@ -16,7 +16,10 @@
     <div class="wrapper">
 
         {% block sidebar %}
-        
+        <a href="{% url 'monthly_report' %}">Отчет за последние 30 дней</a>
+        <a href="{% url 'full_report' %}">Отчет за все время</a>
+        <a href="{% url 'index' %}">Главная</a>
+        <a href="{% url 'create_consumption' %}">Добавить расход</a>
         {% endblock %}
 
         {% block content %} 

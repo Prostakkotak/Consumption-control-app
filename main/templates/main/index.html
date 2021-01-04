@@ -9,6 +9,21 @@
 
 {% if user.is_authenticated %}
 <a href="{% url 'logout' %}?next={{request.path}}">logout</a>
+
+{% if not zero_consumptions %}
+<p>Последний расход: {{last_consumption.amount}} р.</p>
+<p>Всего потрачено за последние 24 часа: {{consumption_amount_24h}} р.</p>
+<p>Последние 10 расходов:</p>
+<ul>
+    {% for item in last_10_consumption %}
+        <li>{{item.amount}} р. | {{item.name}} | Категория: {{item.category}} | {{item.date}}
+            | <a href="{% url 'delete_consumption' pk=item.pk %}">Удалить</a>
+        </li>
+    {% endfor %}
+</ul>
+{% else %}
+Вы пока-что не записали ни одного расхода!
+{% endif %}
 {% else %}
 <div class="question">У вас уже есть аккаунт?</div>
 <a href="{% url 'registration' %}?next={{request.path}}">Нет</a>

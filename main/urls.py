@@ -21,4 +21,8 @@ urlpatterns = [
     path('', views.Index.as_view(), name='index'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/registration/', views.Registration.as_view(), name='registration'),
+    path('monthly_report/', views.MonthlyReport.as_view(), name='monthly_report'),
+    path('full_report/', views.FullReport.as_view(), name='full_report'),
+    path('create_consumption/', views.CreateConsumption.as_view(), name='create_consumption'),
+    path('delete_consumption/<pk>/', views.DeleteConsumption.as_view(), name='delete_consumption'),
 ]
