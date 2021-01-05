@@ -1,4 +1,4 @@
-bind = '127.0.0.1:8000'
+bind = 'std-1388.ist.mospolytech.ru'
 workers = 2
 user = "std"
 timeout = 30
