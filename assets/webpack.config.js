@@ -9,6 +9,7 @@ module.exports = {
     entry: {
         styles: '@styles/styles.scss',
         report: './js/diagram-engine.js',
+        base: './js/mobile-nav.js',
     },
     output: {
         filename: '[name].bundle.js',

@@ -82,6 +82,20 @@ class MonthlyReport(View):
                 'other',
             ]
 
+            categories_ru = [
+                'Недвижимость',
+                'Здоровье',
+                'Подарки',
+                'Поездки',
+                'Личные расходы',
+                'Одежда',
+                'Еда',
+                'Помощь',
+                'Личный транспорт',
+                'Общественный транспорт',
+                'Другое',
+            ]
+
             percents = []
             i = 0
 
@@ -95,6 +109,7 @@ class MonthlyReport(View):
                 percents.append(float('{0: .1f}'.format((category_sum / consumption_amount_30d) * 100)))
 
                 categories[i] += '{0: .1f}'.format((category_sum / consumption_amount_30d) * 100)
+                categories_ru[i] += '{0: .1f}'.format((category_sum / consumption_amount_30d) * 100)
 
                 i += 1
 
@@ -103,6 +118,7 @@ class MonthlyReport(View):
                 'efficiency_score': efficiency_score,
                 'percents': percents,
                 'categories': categories,
+                'categories_ru': categories_ru,
             })
 
         return redirect('index')
@@ -143,6 +159,20 @@ class FullReport(View):
                 'other',
             ]
 
+            categories_ru = [
+                'Недвижимость',
+                'Здоровье',
+                'Подарки',
+                'Поездки',
+                'Личные расходы',
+                'Одежда',
+                'Еда',
+                'Помощь',
+                'Личный транспорт',
+                'Общественный транспорт',
+                'Другое',
+            ]
+
             percents = []
             i = 0
 
@@ -156,6 +186,7 @@ class FullReport(View):
                 percents.append(float('{0: .1f}'.format((category_sum / consumption_amount) * 100)))
 
                 categories[i] += '{0: .1f}'.format((category_sum / consumption_amount) * 100)
+                categories_ru[i] += '{0: .1f}'.format((category_sum / consumption_amount) * 100)
 
                 i += 1
 
@@ -164,6 +195,7 @@ class FullReport(View):
                 'efficiency_score': efficiency_score,
                 'percents': percents,
                 'categories': categories,
+                'categories_ru': categories_ru,
             })
 
         return redirect('index')
@@ -199,6 +231,7 @@ class CreateConsumption(View):
             except AttributeError:
                 pass
 
+            created_model.date = datetime.now()
             created_model.save()
 
             return redirect('index')

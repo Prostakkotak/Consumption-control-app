@@ -4,38 +4,38 @@
 {% block title %}<title>Вход в аккаунт</title>{% endblock %}
 
 {% block content %}
-<div class="login">
-    <h1 class="login__title">Регистрация</h1>
-    {% if form.errors %}
-    <div class="login__error">Your username and password didn't match. Please try again</div>
-    {% endif %}
+<div class="login__wrapper">
+    <div class="login">
+        <h1 class="login__title">Авторизация</h1>
+        {% if form.errors %}
+        <div class="login__error">Имя пользователя или пароль были введены неправильно</div>
+        {% endif %}
 
-    {% if next %}
-    {% if user.is_authenticated %}
-    <div class="login__error">Your account doesn't have access to this page. To proceed,
-        please login with an account that has access.</div>
-    {% endif %}
-    {% endif %}
+        {% if next %}
+        {% if user.is_authenticated %}
+        <div class="login__error">Вы уже авторизованы</div>
+        {% endif %}
+        {% endif %}
 
-    <form class="login-form" method="POST" action="{% url 'login' %}">
-        {% csrf_token %}
+        {% block sidebar %}{% endblock %}
 
-        {% for field in form %}
-        <div class="login-form__input-block">
-            <div class="login-form__label">
-                {{ field.label_tag }}
+        <form class="login-form" method="POST" action="{% url 'login' %}">
+            {% csrf_token %}
+
+            {% for field in form %}
+            <div class="login-form__input-block">
+                <div class="login-form__label">
+                    {{ field.label_tag }}
+                </div>
+                {{ field }}
             </div>
-            {{ field }}
-        </div>
-        {% endfor %}
-        
-        <input class="login-form__submit" type="submit">
-        <input type="hidden" name="next" value="{{ next }}">
-    </form>
+            {% endfor %}
 
-    {# Assumes you setup the password_reset view in your URLconf #}
-    <div class="login__pass-reset"><a href="{% url 'password_reset' %}">Lost password?</a></div>
+            <input class="login-form__submit" type="submit">
+            <input type="hidden" name="next" value="{{ next }}">
+        </form>
 
-    <a href="{% url 'registration' %}" class="login__register-link">Registration</a>
-</div>
+        <a href="{% url 'registration' %}" class="login__register-link">Регистрация</a>
+    </div>
+</div> 
 {% endblock %}

@@ -8,33 +8,31 @@
 
 
 {% if user.is_authenticated %}
-<a href="{% url 'logout' %}?next={{request.path}}">logout</a>
-
 {% if not zero_consumptions %}
-<p>Последний расход: {{last_consumption.amount}} р.</p>
-<p>Всего потрачено за последние 24 часа: {{consumption_amount_24h}} р.</p>
-<p>Последние 10 расходов:</p>
-<ul>
-    {% for item in last_10_consumption %}
-        <li>{{item.amount}} р. | {{item.name}} | Категория: {{item.category}} | {{item.date}}
-            | <a href="{% url 'delete_consumption' pk=item.pk %}">Удалить</a>
+<div class="index-page">
+    <ul class="consumption-list">
+        <div class="consumption-list__header">Последние 10 расходов</div>
+        {% for item in last_10_consumption %}
+        <li class="consumption-list__item">
+            <div class="consumption-list__string"><span class="consumption-list__amount">{{item.amount}}руб</span>, {{item.name}}, Категория: {{item.category}}, {{item.date}}</div>
+            <a href="{% url 'delete_consumption' pk=item.pk %}">Удалить</a>
         </li>
-    {% endfor %}
-</ul>
-<svg width="20%" height="20%" viewBox="0 0 42 42" class="donut">
-    <circle class="donut-hole" cx="21" cy="21" r="15.91549430918954" fill="#fff"></circle>
-    <circle class="donut-ring" cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="#d2d3d4" stroke-width="3"></circle>
-    <circle class="donut-segment" cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="#ce4b99" stroke-width="3" stroke-dasharray="40 60" stroke-dashoffset="25"></circle>
-    <circle class="donut-segment" cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="#b1c94e" stroke-width="3" stroke-dasharray="20 80" stroke-dashoffset="85"></circle>
-    <circle class="donut-segment" cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="#377bbc" stroke-width="3" stroke-dasharray="30 70" stroke-dashoffset="65"></circle>
-    <!-- unused 10% -->
-  </svg>
-{% else %}
-Вы пока-что не записали ни одного расхода!
-{% endif %}
-{% else %}
-<div class="question">У вас уже есть аккаунт?</div>
-<a href="{% url 'registration' %}?next={{request.path}}">Нет</a>
-<a href="{% url 'login' %}?next={{request.path}}">Да</a>
+        {% endfor %}
+    </ul>
+    <div class="last-consumption">
+        <div class="index-page__header">Последний расход</div>
+        <div class="index-page__amount">{{last_consumption.amount}} руб.</div>
+        <div class="index-page__name">{{last_consumption.name}}</div>
+        <div class="index-page__category"> Категория: {{last_consumption.category}}</div>
+    </div>
+    <div class="consumption-amount-24h">
+        <div class="index-page__header">Всего потрачено за последние 24 часа</div>
+        <div class="index-page__amount">{{consumption_amount_24h}} руб.</div>
+    </div>
+
+    {% else %}
+    Вы пока-что не записали ни одного расхода!
+    {% endif %}
+</div>
 {% endif %}
 {% endblock %}

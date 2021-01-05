@@ -10,7 +10,6 @@ class ConsumptionForm(forms.ModelForm):
             'amount',
             'rating',
         )
-
         widgets = {
             'name': forms.TextInput(attrs={
                 'class': 'create-consumption-form__input'
@@ -25,5 +24,3 @@ class ConsumptionForm(forms.ModelForm):
                 'class': 'create-consumption-form__input'
             }),
         }
-
-    
