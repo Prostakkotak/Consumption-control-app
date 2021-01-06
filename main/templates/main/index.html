@@ -2,7 +2,7 @@
 
 {% load static %}
 
-{% block title %}<title>Title</title>{% endblock %}
+{% block title %}<title>Главная</title>{% endblock %}
 
 {% block content %}
 
@@ -11,27 +11,38 @@
 {% if not zero_consumptions %}
 <div class="index-page">
     <ul class="consumption-list">
-        <div class="consumption-list__header">Последние 10 расходов</div>
+        <h1 class="consumption-list__header">Последние 10 расходов</h1>
         {% for item in last_10_consumption %}
         <li class="consumption-list__item">
-            <div class="consumption-list__string"><span class="consumption-list__amount">{{item.amount}}руб</span>, {{item.name}}, Категория: {{item.category}}, {{item.date}}</div>
+            <div class="consumption-list__string">
+                <span class="consumption-list__amount">
+                    {{item.amount}}руб,
+                </span>
+                <span>{{item.name}},</span>
+                <span>Категория: {{item.category}},</span>
+                <span><time>{{item.date}}</time></span>
+            </div>
             <a href="{% url 'delete_consumption' pk=item.pk %}">Удалить</a>
         </li>
         {% endfor %}
     </ul>
-    <div class="last-consumption">
-        <div class="index-page__header">Последний расход</div>
+    <article class="last-consumption">
+        <h1 class="index-page__header">Последний расход</h1>
         <div class="index-page__amount">{{last_consumption.amount}} руб.</div>
         <div class="index-page__name">{{last_consumption.name}}</div>
         <div class="index-page__category"> Категория: {{last_consumption.category}}</div>
-    </div>
-    <div class="consumption-amount-24h">
-        <div class="index-page__header">Всего потрачено за последние 24 часа</div>
+    </article>
+    <article class="consumption-amount-24h">
+        <h1 class="index-page__header">Всего потрачено за последние 24 часа</h1>
         <div class="index-page__amount">{{consumption_amount_24h}} руб.</div>
-    </div>
+    </article>
 
     {% else %}
-    Вы пока-что не записали ни одного расхода!
+    <main class="page-placeholder__wrapper">
+        <div class="page-placeholder">
+            <div class="page-placeholder__title">Вы пока-что не добавили ни одного расхода</div>
+        </div>
+    </main>
     {% endif %}
 </div>
 {% endif %}

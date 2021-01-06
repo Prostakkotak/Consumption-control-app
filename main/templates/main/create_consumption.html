@@ -9,24 +9,36 @@
 
 {% if user.is_authenticated %}
 
-<div class="previous-page-button">
-    <a href="#" onclick="javascript: history.go(-1)" class="previous-page-button__button">&lt; Назад</a>
-</div>
-
-<div class="create-consumption">
+<main class="create-consumption">
     <form enctype="multipart/form-data" method="POST" class="create-consumption-form create-consumption__form">
         {% csrf_token %}
-        {% for field in form %}
         <div class="create-consumption-form__input-block">
-            <span class="create-consumption-form__label">
-                {{field.label_tag}}
-            </span>
-            {{field}}
+            <div class="create-consumption-form__label">
+                Название
+            </div>
+            {{form.name}}
         </div>
-        {% endfor %}
-        <input type="submit" class="create-consumption-form__submit">
+        <div class="create-consumption-form__input-block">
+            <div class="create-consumption-form__label">
+                Категория
+            </div>
+            {{form.category}}
+        </div>
+        <div class="create-consumption-form__input-block">
+            <div class="create-consumption-form__label">
+                Потрачено (руб)
+            </div>
+            {{form.amount}}
+        </div>
+        <div class="create-consumption-form__input-block">
+            <div class="create-consumption-form__label">
+                По 10-и бальной шкале, насколько данная трата была целесообразна?
+            </div>
+            {{form.rating}}
+        </div>
+        <input value="Добавить" type="submit" class="create-consumption-form__submit">
     </form>
-</div>
+</main>
 
 {% endif %}
 {% endblock %}

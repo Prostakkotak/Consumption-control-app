@@ -10,6 +10,6 @@
 /*!**************************!*\
   !*** ./js/mobile-nav.js ***!
   \**************************/
-eval("bodyShadow = document.getElementById('body-shadow');\r\n\r\nlet dropDownNav = document.getElementsByClassName('nav')[0];\r\n\r\ndocument.addEventListener('click', function (e) {\r\n    if (e.target.id == 'trigram' || e.target.classList.contains('trigram__line')) {\r\n        trigram.classList.toggle('open');\r\n        dropDownNav.classList.toggle('open');\r\n        bodyShadow.classList.toggle('active');\r\n    }\r\n})\n\n//# sourceURL=webpack://assets/./js/mobile-nav.js?");
+eval("let bodyShadow = document.getElementById('body-shadow');\n\nlet dropDownNav = document.getElementsByClassName('nav')[0];\n\ndocument.addEventListener('click', function (e) {\n    if (e.target.id == 'trigram' || e.target.classList.contains('trigram__line')) {\n        trigram.classList.toggle('open');\n        dropDownNav.classList.toggle('open');\n        bodyShadow.classList.toggle('active');\n    } else if (dropDownNav.classList.contains('open') && e.target == bodyShadow) {\n        trigram.classList.toggle('open');\n        dropDownNav.classList.toggle('open');\n        bodyShadow.classList.toggle('active');\n    }\n});\n\n//# sourceURL=webpack://assets/./js/mobile-nav.js?");
 /******/ })()
 ;

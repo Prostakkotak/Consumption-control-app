@@ -67,12 +67,12 @@ body {
 }
 
 .body-shadow {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   opacity: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   background-color: rgba(0, 0, 0, 0.85);
   transition: 0.6s;
   z-index: -1;
@@ -85,7 +85,20 @@ body {
 }
 
 .nav__create-consumption {
+  position: fixed;
   display: none;
+  align-items: center;
+  justify-content: center;
+  top: 5px;
+  left: 5px;
+  text-decoration: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 7px;
+  font-size: 40px;
+  color: #ffffff;
+  background-color: #123e78;
+  transition: 200ms;
 }
 
 .nav {
@@ -103,7 +116,7 @@ body {
   z-index: 9999;
 }
 .nav__open-button .trigram {
-  position: absolute;
+  position: fixed;
   top: 5px;
   right: 5px;
   box-sizing: border-box;
@@ -115,19 +128,23 @@ body {
   width: 40px;
   height: 40px;
   border-radius: 10px;
+  background-color: #123e78;
   cursor: pointer;
   transition: 0.6s;
 }
 .nav__open-button .trigram__line {
   box-sizing: border-box;
   height: 1px;
-  width: 30px;
-  background-color: #123e78;
+  width: 28px;
+  background-color: #ffffff;
   transition: 0.6s;
 }
 .nav__open-button .trigram.open {
   background-color: #ffffff;
   transition: 0.6s;
+}
+.nav__open-button .trigram.open .trigram__line {
+  background-color: #123e78;
 }
 .nav__open-button .trigram.open .trigram__line:first-child {
   transform: translateY(7px) rotate(-225deg);
@@ -191,7 +208,7 @@ body {
   transition: 200ms;
 }
 
-.question__wrapper {
+.page-placeholder__wrapper {
   display: flex;
   width: 100vw;
   height: 100vh;
@@ -200,14 +217,14 @@ body {
   text-align: center;
 }
 
-.question__title {
+.page-placeholder__title {
   width: 100%;
   text-align: center;
   font-size: 28px;
   padding-bottom: 20px;
 }
 
-.question__button {
+.page-placeholder__button {
   display: inline-block;
   padding: 6px 30px;
   margin: 5px 25px;
@@ -220,7 +237,7 @@ body {
   transition: 200ms;
 }
 
-.question__button:hover {
+.page-placeholder__button:hover {
   background-color: #f2bb05;
   transition: 200ms;
 }
@@ -259,27 +276,40 @@ body {
   background-color: rgba(255, 0, 0, 0.2);
 }
 
-.login-form__input-block {
+.login-form__input-block,
+.create-consumption-form__input-block {
   margin-bottom: 20px;
+  width: 100%;
 }
-.login-form__input-block .login-form__label {
+.login-form__input-block .login-form__label,
+.login-form__input-block .create-consumption-form__label,
+.create-consumption-form__input-block .login-form__label,
+.create-consumption-form__input-block .create-consumption-form__label {
   margin-bottom: 10px;
 }
-.login-form__input-block input {
-  min-width: 100px;
-  padding: 6px 30px;
+.login-form__input-block input,
+.login-form__input-block select,
+.create-consumption-form__input-block input,
+.create-consumption-form__input-block select {
+  width: 80%;
+  min-width: 250px;
+  max-width: 300px;
+  padding: 6px 5px;
   font-size: 16px;
   border-radius: 5px;
   border: 0;
+  box-sizing: border-box;
   transition: 200ms;
 }
-.login-form__input-block input:focus {
+.login-form__input-block input:focus,
+.create-consumption-form__input-block input:focus {
   outline: 0;
   background-color: rgba(255, 255, 255, 0.8);
   transition: 200ms;
 }
 
-.login-form__submit {
+.login-form__submit,
+.create-consumption-form__submit {
   margin-top: 10px;
   border-radius: 5px;
   border: 0;
@@ -289,13 +319,15 @@ body {
   background-color: #ffffff;
 }
 
-.login-form__submit:hover {
+.login-form__submit:hover,
+.create-consumption-form__submit:hover {
   cursor: pointer;
   background-color: rgba(255, 255, 255, 0.8);
   transition: 200ms;
 }
 
-.login-form__submit:focus {
+.login-form__submit:focus,
+.create-consumption-form__submit:focus {
   outline: 0;
   transition: 200ms;
   background-color: #f2bb05;
@@ -360,7 +392,9 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 5px 0;
+  margin: 5px 0 10px 0;
+  padding: 5px 0;
+  border-bottom: 1px solid #123e78;
 }
 .consumption-list__item a {
   display: inline-block;
@@ -384,16 +418,27 @@ body {
   color: #123e78;
 }
 
+.report-page__text-section {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.diagram-section {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
 .diagram {
   width: 42%;
-  float: right;
 }
 
 .categories__wrapper {
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
-  margin-top: 150px;
 }
 
 .categories__color {
@@ -406,6 +451,25 @@ body {
 
 .categories__item {
   font-size: 25px;
+}
+
+.create-consumption {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.create-consumption-form {
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.create-consumption-form input,
+.create-consumption-form select {
+  border: 1px solid #123e78;
 }
 
 @media screen and (max-width: 1440px) {
@@ -429,7 +493,7 @@ body {
   }
 
   .nav {
-    position: absolute;
+    position: fixed;
     display: block;
     right: 0;
     top: 0;
@@ -439,6 +503,9 @@ body {
     transform: translate(100%, 0);
     z-index: 9000;
     transition: 0.6s;
+  }
+  .nav #create-consumption-text-button {
+    display: none;
   }
   .nav .nav__menu {
     margin-top: 50px;
@@ -463,9 +530,6 @@ body {
     background-color: #f2bb05;
     color: #ffffff;
   }
-  .nav #create-consumption-text-button {
-    display: none;
-  }
   .nav .nav__logout-button {
     position: absolute;
     bottom: 10px;
@@ -473,20 +537,7 @@ body {
   }
 
   .nav__create-consumption {
-    position: absolute;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    top: 5px;
-    left: 5px;
-    text-decoration: 0;
-    width: 40px;
-    height: 40px;
-    border-radius: 7px;
-    font-size: 40px;
-    color: #ffffff;
-    background-color: #123e78;
-    transition: 200ms;
   }
 
   .nav__create-consumption:hover {
@@ -508,10 +559,34 @@ body {
   .consumption-list__header {
     margin-top: 60px;
   }
+
+  .report-page__header {
+    font-size: 30px;
+  }
+
+  .report-page__header:first-child {
+    margin-right: 15px;
+  }
+}
+@media screen and (max-width: 700px) {
+  .report-page__text-section {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .diagram-section {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .diagram {
+    display: block;
+    margin: 0 auto;
+    width: 85%;
+  }
 }
 @media screen and (max-width: 550px) {
   .wrapper {
-    padding-bottom: 100px;
     min-height: 100vh;
   }
 
@@ -522,14 +597,10 @@ body {
   .consumption-list__item {
     margin: 0;
     padding: 10px 0;
-    border-bottom: 1px solid #123e78;
   }
 
-  .diagram {
-    float: none;
-    display: block;
-    margin: 0 auto;
-    width: 70%;
+  .report-page {
+    padding-top: 10px;
   }
 
   .report-page__header {
@@ -541,7 +612,7 @@ body {
   }
 
   .categories__wrapper {
-    margin-top: 50px;
+    margin-top: 10px;
   }
 
   .categories__color {

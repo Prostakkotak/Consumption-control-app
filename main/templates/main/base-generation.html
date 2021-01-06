@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/5d8af9cd0e.js"></script>
     <link rel="stylesheet" href="{% static 'styles.css' %}">
@@ -39,15 +40,15 @@
             <a href="{% url 'logout' %}?next=/" class="nav__logout-button">Выйти</a>
         </nav>
         {% else %}
-        <div class="question__wrapper">
-            <div class="question">
-                <div class="question__title">У вас уже есть аккаунт?</div>
-                <div class="question__buttons-wrapper">
-                    <a class="question__button" href="{% url 'registration' %}?next={{request.path}}">Нет</a>
-                    <a class="question__button" href="{% url 'login' %}?next={{request.path}}">Да</a>
+        <main class="page-placeholder__wrapper">
+            <div class="page-placeholder">
+                <div class="page-placeholder__title">У вас уже есть аккаунт?</div>
+                <div class="page-placeholder__buttons-wrapper">
+                    <a class="page-placeholder__button" href="{% url 'registration' %}?next={{request.path}}">Нет</a>
+                    <a class="page-placeholder__button" href="{% url 'login' %}?next={{request.path}}">Да</a>
                 </div>
             </div>
-        </div>
+        </main>
         {% endif %}
         {% endblock %}
 
