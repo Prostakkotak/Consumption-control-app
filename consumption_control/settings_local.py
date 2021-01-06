@@ -10,17 +10,8 @@ ALLOWED_HOSTS = []
 
 DATABASES = {
     'default': {
-<<<<<<< HEAD
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join('db.sqlite3'),
-=======
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'std_1388',
-        'USER': 'std_1388',
-        'PASSWORD': 'vaskovsky',
-        'HOST': 'std-mysql.ist.mospolytech.ru',
-        'PORT': '3306',
->>>>>>> 0552e4f6c5d0b2ce4fb2bd5c2a2670f55c7a9c2c
     }
 }
 
