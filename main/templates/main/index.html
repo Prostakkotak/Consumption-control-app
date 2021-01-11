@@ -22,7 +22,7 @@
                 <span>Категория: {{item.category}},</span>
                 <span><time>{{item.date}}</time></span>
             </div>
-            <a href="{% url 'delete_consumption' pk=item.pk %}">Удалить</a>
+            <a class="consumption-list__item-delete" href="{% url 'delete_consumption' pk=item.pk %}">Удалить</a>
         </li>
         {% endfor %}
     </ul>
@@ -37,6 +37,7 @@
         <div class="index-page__amount">{{consumption_amount_24h}} руб.</div>
     </article>
 
+    <script src="{% static 'index.bundle.js' %}"></script>
     {% else %}
     <main class="page-placeholder__wrapper">
         <div class="page-placeholder">

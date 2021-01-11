@@ -66,9 +66,9 @@ class MonthlyReport(View):
                 efficiency_sum += consumption.rating
 
             # Расчет эффективности трат
-            efficiency_score = (efficiency_sum / (consumption_count * 10)) * 10
+            efficiency_score = round((efficiency_sum / (consumption_count * 10)) * 10, 2)
 
-            categories = [ # Список категорий для расчета процентного соотношения для диаграммы
+            categories = [  # Список категорий для расчета процентного соотношения для диаграммы
                 'property',
                 'health',
                 'presents',
@@ -106,10 +106,13 @@ class MonthlyReport(View):
                 for consumption in temp_list:
                     category_sum += consumption.amount
 
-                percents.append(float('{0: .1f}'.format((category_sum / consumption_amount_30d) * 100)))
+                percents.append(float('{0: .1f}'.format(
+                    (category_sum / consumption_amount_30d) * 100)))
 
-                categories[i] += '{0: .1f}'.format((category_sum / consumption_amount_30d) * 100)
-                categories_ru[i] += '{0: .1f}'.format((category_sum / consumption_amount_30d) * 100)
+                categories[i] += '{0: .1f}'.format(
+                    (category_sum / consumption_amount_30d) * 100)
+                categories_ru[i] += '{0: .1f}'.format(
+                    (category_sum / consumption_amount_30d) * 100)
 
                 i += 1
 
@@ -143,9 +146,9 @@ class FullReport(View):
                 efficiency_sum += consumption.rating
 
             # Расчет эффективности трат
-            efficiency_score = (efficiency_sum / (consumption_count * 10)) * 10
+            efficiency_score = round((efficiency_sum / (consumption_count * 10)) * 10, 2)
 
-            categories = [ # Список категорий для расчета процентного соотношения для диаграммы
+            categories = [  # Список категорий для расчета процентного соотношения для диаграммы
                 'property',
                 'health',
                 'presents',
@@ -183,10 +186,13 @@ class FullReport(View):
                 for consumption in temp_list:
                     category_sum += consumption.amount
 
-                percents.append(float('{0: .1f}'.format((category_sum / consumption_amount) * 100)))
+                percents.append(float('{0: .1f}'.format(
+                    (category_sum / consumption_amount) * 100)))
 
-                categories[i] += '{0: .1f}'.format((category_sum / consumption_amount) * 100)
-                categories_ru[i] += '{0: .1f}'.format((category_sum / consumption_amount) * 100)
+                categories[i] += '{0: .1f}'.format(
+                    (category_sum / consumption_amount) * 100)
+                categories_ru[i] += '{0: .1f}'.format(
+                    (category_sum / consumption_amount) * 100)
 
                 i += 1
 
