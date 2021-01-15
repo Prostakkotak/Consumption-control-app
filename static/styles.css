@@ -84,6 +84,60 @@ body {
   transition: 0.6s;
 }
 
+.delete-pop-up {
+  position: fixed;
+  top: 40%;
+  left: calc((100% - 300px) / 2);
+  width: 300px;
+  text-align: center;
+  border-radius: 5px;
+  background-color: #ffffff;
+  z-index: 9500;
+}
+
+.delete-pop-up.hidden {
+  display: none;
+}
+
+.delete-pop-up__confirmation {
+  display: block;
+  margin: 15px;
+  padding: 5px 0;
+  font-size: 18px;
+  text-decoration: none;
+  border: 1px solid green;
+  border-radius: 5px;
+  color: green;
+  transition: 200ms;
+}
+
+.delete-pop-up__confirmation:hover {
+  color: #ffffff;
+  background-color: green;
+  transition: 200ms;
+}
+
+.delete-pop-up__warning {
+  margin: 15px;
+  font-size: 14px;
+}
+
+.delete-pop-up__cancel {
+  margin: 15px;
+  padding: 6px 0;
+  border-radius: 5px;
+  border: 1px solid red;
+  color: red;
+  transition: 200ms;
+}
+
+.delete-pop-up__cancel:hover {
+  background-color: red;
+  color: #ffffff;
+  transition: 200ms;
+  cursor: pointer;
+}
+
 .nav__create-consumption {
   position: fixed;
   display: none;
@@ -94,7 +148,7 @@ body {
   text-decoration: 0;
   width: 40px;
   height: 40px;
-  border-radius: 7px;
+  border-radius: 3px;
   font-size: 40px;
   color: #ffffff;
   background-color: #123e78;
@@ -113,7 +167,7 @@ body {
   position: relative;
   border-radius: 7px;
   border: 0;
-  z-index: 9999;
+  z-index: 9500;
 }
 .nav__open-button .trigram {
   position: fixed;
@@ -127,7 +181,7 @@ body {
   align-items: center;
   width: 40px;
   height: 40px;
-  border-radius: 10px;
+  border-radius: 3px;
   background-color: #123e78;
   cursor: pointer;
   transition: 0.6s;
@@ -316,13 +370,15 @@ body {
   padding: 6px 30px;
   font-size: 16px;
   transition: 200ms;
-  background-color: #ffffff;
+  background-color: transparent;
+  color: #123e78;
 }
 
 .login-form__submit:hover,
 .create-consumption-form__submit:hover {
   cursor: pointer;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: #123e78;
+  color: #ffffff;
   transition: 200ms;
 }
 
@@ -330,6 +386,7 @@ body {
 .create-consumption-form__submit:focus {
   outline: 0;
   transition: 200ms;
+  border-color: #f2bb05;
   background-color: #f2bb05;
 }
 
